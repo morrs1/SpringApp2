@@ -5,10 +5,11 @@ import springApp.models.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class PeopleDAO {
     private static int PEOPLE_COUNTER;
-    private List<Person> people;
+    private final List<Person> people;
 
     {
         people = new ArrayList<>();
@@ -24,11 +25,15 @@ public class PeopleDAO {
         people.add(person);
     }
 
-    public List<Person> read(){
+    public List<Person> read() {
         return people;
     }
 
     public Person read(int id) {
-        return people.stream().filter(person->person.getId()==id).findAny().orElse(null);
+        return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
+    }
+
+    public void delete(int id) {
+        people.removeIf(person -> person.getId() == id);
     }
 }

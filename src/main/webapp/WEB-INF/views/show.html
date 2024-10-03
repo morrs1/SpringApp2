@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Человек</title>
+    <title>Person</title>
 </head>
 <body>
 <p th:text="${person.getName()}">Value</p>
@@ -10,5 +10,9 @@
 <p th:text="${person.getEmail()}">Email</p>
 <p th:text="${person.getId()}">VALUE</p>
 
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Change</a>
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
 </body>
 </html>
