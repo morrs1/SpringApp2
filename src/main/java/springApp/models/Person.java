@@ -10,10 +10,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {
-    private static int PEOPLE_COUNTER = 0;
 
     private int id;
     private String name;
     private String surname;
+    private int age;
     private String email;
 }

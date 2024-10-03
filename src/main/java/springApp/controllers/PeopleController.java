@@ -48,6 +48,7 @@ public class PeopleController {
         Person personForUpdate = peopleDAO.read(person.getId());
         personForUpdate.setName(person.getName());
         personForUpdate.setSurname(person.getSurname());
+        personForUpdate.setAge(person.getAge());
         personForUpdate.setEmail(person.getEmail());
         return "redirect:/people";
     }
