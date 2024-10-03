@@ -20,6 +20,7 @@ public class PeopleDAO {
     }
 
     public void create(Person person) {
+        person.setId(++PEOPLE_COUNTER);
         people.add(person);
     }
 
