@@ -1,9 +1,11 @@
 package springApp.controllers;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import springApp.DAO.PeopleDAO;
 import springApp.models.Person;
@@ -32,7 +34,10 @@ public class PeopleController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") Person person) {
+    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/create";
+        }
         peopleDAO.create(person);
         return "redirect:/people";
     }
@@ -44,7 +49,10 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") Person person) {
+    public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/edit";
+        }
         Person personForUpdate = peopleDAO.read(person.getId());
         personForUpdate.setName(person.getName());
         personForUpdate.setSurname(person.getSurname());
