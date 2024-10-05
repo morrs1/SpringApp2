@@ -53,11 +53,7 @@ public class PeopleController {
         if (bindingResult.hasErrors()) {
             return "/edit";
         }
-        Person personForUpdate = peopleDAO.read(person.getId());
-        personForUpdate.setName(person.getName());
-        personForUpdate.setSurname(person.getSurname());
-        personForUpdate.setAge(person.getAge());
-        personForUpdate.setEmail(person.getEmail());
+        peopleDAO.update(person);
         return "redirect:/people";
     }
 
