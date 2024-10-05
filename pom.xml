@@ -83,6 +83,13 @@
       <version>42.7.4</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.vetsion}</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>SpringApp2</finalName>
